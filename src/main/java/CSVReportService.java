@@ -47,6 +47,10 @@ List<Allinfo> ListOfPersonsTransactions= allTransactions.stream()
 
 
 
+
+
+
+
 return ListOfPersonsTransactions;
     }
 
