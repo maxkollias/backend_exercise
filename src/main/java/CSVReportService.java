@@ -1,4 +1,14 @@
+import model.Person;
+import model.Transaction;
 import repositories.TransactionRepository;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import static javax.swing.UIManager.put;
 
 public class CSVReportService {
 
@@ -26,4 +36,20 @@ public class CSVReportService {
     public String getAverageConsumptionPerRoleDuringTheLastMonth() {
         throw new UnsupportedOperationException();
     }
+
+    public List<Allinfo> tranNew(List<Transaction> allTransactions) {
+
+List<Allinfo> ListOfPersonsTransactions= allTransactions.stream()
+        .map(t-> new Allinfo(t,personsService.getPersonByEmailAddress(t.getEmailAddress())))
+        .filter(a->a.getPerson().isPresent())
+        .filter(t -> t.transaction.getDate().isAfter(LocalDateTime.now().minusDays(30)))
+        .collect(Collectors.toList());
+
+
+
+return ListOfPersonsTransactions;
+    }
+
 }
+
+

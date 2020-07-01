@@ -37,6 +37,11 @@ public class CampaignMapperTest {
 
     }
 
+    @Test
+    public void printMSM(){
+        System.out.println("hi michael");
+    }
+
     private Person createPerson(String name, String email, int age) {
         Person person = new Person();
         person.setName(name);
@@ -52,4 +57,6 @@ public class CampaignMapperTest {
         transaction.setDate(date);
         return transaction;
     }
+
+
 }
